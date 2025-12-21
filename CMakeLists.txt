@@ -29,8 +29,14 @@ target_sources(a_test PRIVATE
     ${CMAKE_SOURCE_DIR}/Tests/a_test.c
     # Add application sources.
     # Add system and startup sources.
+    ${CMAKE_SOURCE_DIR}/Cpu0_Main.c
+    ${CMAKE_SOURCE_DIR}/Cpu1_Main.c
+    ${CMAKE_SOURCE_DIR}/Cpu2_Main.c
 )
-target_include_directories(a_test PRIVATE ${MX_Test_Include_Dirs})
-target_compile_definitions(a_test PRIVATE ${MX_Test_Defines_Syms})
-add_test(NAME a_test COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} ${CMAKE_BINARY_DIR}/a_test.elf)
+target_link_libraries(a_test
+    ConfigurationsAndLibraries
+)
+add_test(NAME a_test COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR}
+    -device loader,file=${CMAKE_BINARY_DIR}/a_test.elf
+)
 set_target_properties(a_test PROPERTIES TIMEOUT 30)
