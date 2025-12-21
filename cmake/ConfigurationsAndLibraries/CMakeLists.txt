@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
-enable_language(C ASM)
+enable_language(C)
 
-set(Libraries_Include_Directories
+set(ConfigurationsAndLibraries_Include_Directories
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/Infra
@@ -44,7 +44,10 @@ set(Libraries_Include_Directories
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/iLLD/TC37A/Tricore/_PinMap
 )
 
-set(Libraries_Sources
+set(ConfigurationsAndLibraries_Sources
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations/Debug/sync_on_halt.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations/Ifx_Cfg_Ssw.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations/Ifx_Cfg_SswBmhd.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/iLLD/TC37A/Tricore/_PinMap/IfxAsclin_PinMap.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/iLLD/TC37A/Tricore/_PinMap/IfxCan_PinMap.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/iLLD/TC37A/Tricore/_PinMap/IfxCcu6_PinMap.c
@@ -122,13 +125,10 @@ set(Libraries_Sources
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/Infra/Platform/Tricore/Compilers/CompilerGhs.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/Infra/Platform/Tricore/Compilers/CompilerGnuc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Libraries/Infra/Platform/Tricore/Compilers/CompilerTasking.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations/Debug/sync_on_halt.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations/Ifx_Cfg_Ssw.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../Configurations/Ifx_Cfg_SswBmhd.c
 )
 
-add_library(Libraries OBJECT)
-target_sources(Libraries PRIVATE ${Libraries_Sources})
-# The include directories for the Libraries target need to be set as PUBLIC
+add_library(ConfigurationsAndLibraries OBJECT)
+target_sources(ConfigurationsAndLibraries PRIVATE ${ConfigurationsAndLibraries_Sources})
+# The include directories for the target need to be set as PUBLIC
 # to propagating them to targets that link against Libraries.
-target_include_directories(Libraries PUBLIC ${Libraries_Include_Directories})
+target_include_directories(ConfigurationsAndLibraries PUBLIC ${ConfigurationsAndLibraries_Include_Directories})

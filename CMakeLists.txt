@@ -3,7 +3,7 @@ project(qemu_semihosting_tricore LANGUAGES C ASM)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(cmake/Libraries)
+add_subdirectory(cmake/ConfigurationsAndLibraries)
 
 add_executable(${CMAKE_PROJECT_NAME}
     Cpu0_Main.c
@@ -13,5 +13,5 @@ add_executable(${CMAKE_PROJECT_NAME}
 
 # Add linked libraries.
 target_link_libraries(${CMAKE_PROJECT_NAME}
-    Libraries
+    ConfigurationsAndLibraries
 )
