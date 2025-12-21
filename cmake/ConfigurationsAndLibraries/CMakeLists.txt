@@ -1,3 +1,6 @@
+# The include directories and source files for the Configurations and Libraries
+# have interdependencies. Compile them together in a single CMake target to
+# avoid issues.
 cmake_minimum_required(VERSION 3.22)
 enable_language(C)
 
