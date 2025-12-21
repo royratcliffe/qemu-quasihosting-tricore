@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 project(qemu_semihosting_tricore LANGUAGES C ASM)
+message("Build type: " ${CMAKE_BUILD_TYPE})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
