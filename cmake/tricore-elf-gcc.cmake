@@ -44,6 +44,4 @@ set(CMAKE_CROSSCOMPILING_EMULATOR qemu-system-tricore
     -machine none
     -nographic
     -no-reboot
-    -semihosting-config enable=on,target=native
-    -kernel
 )
