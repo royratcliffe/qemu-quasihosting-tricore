@@ -33,3 +33,17 @@ set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -T\"${CMAKE_SOURCE_DIR}/Lcf_Gnuc_T
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -nocrt0 -Wl,--gc-sections -mtc162")
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
 set(CMAKE_CXX_LINK_FLAGS ${CMAKE_C_LINK_FLAGS})
+
+# QEMU System TriCore emulator configuration for cross-compiling tests.
+# qemu-system-tricore.exe" -machine help
+# Supported machines are:
+# KIT_AURIX_TC277_TRB  Infineon AURIX TriBoard TC277 (D-Step)
+# none                 empty machine
+# tricore_testboard    a minimal TriCore board
+set(CMAKE_CROSSCOMPILING_EMULATOR qemu-system-tricore
+    -machine none
+    -nographic
+    -no-reboot
+    -semihosting-config enable=on,target=native
+    -kernel
+)
