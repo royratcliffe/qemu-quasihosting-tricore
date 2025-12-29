@@ -1,0 +1,55 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Launch QEMU",
+            "type": "shell",
+            // Requires QEMU to be installed and available in PATH. You may need
+            // to adjust the command to point to qemu-system-tricore.exe after
+            // installation.
+            "command": "qemu-system-tricore",
+            "args": [
+                "-M", "tricore_testboard",
+                "-kernel", "${command:cmake.launchTargetPath}",
+                "-gdb", "tcp::2345",
+                "-S"
+            ],
+            "dependsOn": [
+                "CMake: build",
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "source": "QEMU",
+                "pattern": {
+                    "regexp": ""
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Including script: .*",
+                    "endsPattern": ".*GDB server with all CPUs started on port.*"
+                }
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Terminate QEMU",
+            "command": "${input:terminate}",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "terminateAll"
+        }
+    ]
+}

@@ -15,7 +15,10 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/Infineon/AURIX-Studio-1.10.28/winIDEA/gdb_multiarch/gdb.exe",
+            "miDebuggerPath": "tricore-elf-gdb.exe",
+            "miDebuggerServerAddress": "localhost:2345",
+            "preLaunchTask": "Launch QEMU",
+            "postDebugTask": "Terminate QEMU",
             // Use the following gdb command to list the available target architectures:
             //
             //      set architecture
@@ -44,6 +47,5 @@
                 }
             ]
         }
-
     ]
 }
