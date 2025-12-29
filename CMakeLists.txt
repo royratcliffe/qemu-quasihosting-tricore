@@ -36,7 +36,8 @@ target_sources(a_test PRIVATE
 target_link_libraries(a_test
     ConfigurationsAndLibraries
 )
+set_target_properties(a_test PROPERTIES TIMEOUT 30)
+
 add_test(NAME a_test COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR}
     -device loader,file=${CMAKE_BINARY_DIR}/a_test.elf
 )
-set_target_properties(a_test PROPERTIES TIMEOUT 30)
