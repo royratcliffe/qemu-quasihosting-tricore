@@ -20,8 +20,18 @@
             //
             //      set architecture
             //
-            "targetArchitecture": "TriCore:V1_6_2",
+            // The target architecture for TriCore V1.6.2 is specified below but does not work with the
+            // current version of cppdbg (as of December 2025).
+            //
+            //      "targetArchitecture": "TriCore:V1_6_2",
+            //
+            // As a workaround, the target architecture is set using the "setupCommands" below.
             "setupCommands": [
+                {
+                    "description": "Set the target architecture to TriCore V1.6.2",
+                    "text": "set architecture TriCore:V1_6_2",
+                    "ignoreFailures": false
+                },
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
