@@ -16,6 +16,10 @@
             "externalConsole": false,
             "MIMode": "gdb",
             "miDebuggerPath": "C:/Infineon/AURIX-Studio-1.10.28/winIDEA/gdb_multiarch/gdb.exe",
+            // Use the following gdb command to list the available target architectures:
+            //
+            //      set architecture
+            //
             "targetArchitecture": "TriCore:V1_6_2",
             "setupCommands": [
                 {
