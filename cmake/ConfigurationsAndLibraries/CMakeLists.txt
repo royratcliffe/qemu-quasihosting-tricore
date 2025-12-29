@@ -130,7 +130,7 @@ set(ConfigurationsAndLibraries_Sources
     ${CMAKE_SOURCE_DIR}/Libraries/Infra/Platform/Tricore/Compilers/CompilerTasking.c
 )
 
-add_library(ConfigurationsAndLibraries OBJECT)
+add_library(ConfigurationsAndLibraries STATIC)
 target_sources(ConfigurationsAndLibraries PRIVATE ${ConfigurationsAndLibraries_Sources})
 # The include directories for the target need to be set as PUBLIC
 # to propagating them to targets that link against Libraries.
