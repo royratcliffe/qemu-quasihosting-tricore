@@ -41,7 +41,8 @@ set(CMAKE_CXX_LINK_FLAGS ${CMAKE_C_LINK_FLAGS})
 # none                 empty machine
 # tricore_testboard    a minimal TriCore board
 set(CMAKE_CROSSCOMPILING_EMULATOR qemu-system-tricore
-    -machine none
+    -machine KIT_AURIX_TC277_TRB
     -nographic
     -no-reboot
+    -kernel
 )
