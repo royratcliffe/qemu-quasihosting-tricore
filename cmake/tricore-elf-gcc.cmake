@@ -21,18 +21,14 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # Specify compiler flags.
 set(CMAKE_C_FLAGS "--std=c99 -Wall -fmessage-length=0 -fno-common -fstrict-volatile-bitfields -fdata-sections -ffunction-sections -mtc162")
-set(CMAKE_CXX_FLAGS ${CMAKE_C_FLAGS})
 
 set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
-set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
-set(CMAKE_CXX_FLAGS_RELEASE ${CMAKE_C_FLAGS_RELEASE})
 
 # Specify linker flags.
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -T\"${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl\"")
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -nocrt0 -Wl,--gc-sections -mtc162")
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
-set(CMAKE_CXX_LINK_FLAGS ${CMAKE_C_LINK_FLAGS})
 
 # QEMU System TriCore emulator configuration for cross-compiling tests.
 # qemu-system-tricore.exe" -machine help
