@@ -10,6 +10,16 @@
             // to adjust the command to point to qemu-system-tricore.exe after
             // installation.
             "command": "qemu-system-tricore",
+            // Do not include the normal QEMU no-graphic and no-reboot options.
+            // Option -nographic forces QEMU to use the console for serial I/O.
+            // Option -no-reboot prevents QEMU from rebooting on exit, which
+            // interferes with the debugger session.
+            //
+            // Note that the GDB server options are required to match those
+            // specified in launch.json for the debugger to connect. Option -s
+            // is shorthand for -gdb tcp::1234 which starts a GDB server
+            // listening on localhost port 1234. Option -S makes QEMU start in
+            // paused mode, waiting for a GDB connection.
             "args": [
                 "-M", "tricore_testboard",
                 "-kernel", "${command:cmake.launchTargetPath}",
