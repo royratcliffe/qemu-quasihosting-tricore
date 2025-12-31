@@ -24,6 +24,11 @@
                 // Only the TC277 TRB machine seems to support GDB stubs.
                 "-M", "KIT_AURIX_TC277_TRB",
 
+                // Use the console for serial I/O. QEMU's default is to create a
+                // separate window for serial I/O. The QEMU monitor will appear
+                // in the launch terminal.
+                "-nographic",
+
                 // Create some extra reset output for the problem matcher to catch.
                 // This helps to determine when QEMU has started successfully.
                 "-d", "cpu_reset",
