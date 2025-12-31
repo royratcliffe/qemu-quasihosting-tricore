@@ -47,6 +47,7 @@
                 }
             },
             "group": "test",
+            "detail": "Launch QEMU emulator",
             "presentation": {
                 "reveal": "always",
                 "panel": "dedicated"
