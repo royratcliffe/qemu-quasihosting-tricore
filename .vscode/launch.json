@@ -32,7 +32,7 @@
             "setupCommands": [
                 {
                     "description": "Set the target architecture to TriCore V1.6.2",
-                    "text": "set architecture TriCore:V1_6_2",
+                    "text": "-gdb-set architecture TriCore:V1_6_2",
                     "ignoreFailures": false
                 },
                 {
