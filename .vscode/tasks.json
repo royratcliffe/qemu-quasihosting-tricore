@@ -21,7 +21,8 @@
             // listening on localhost port 1234. Option -S makes QEMU start in
             // paused mode, waiting for a GDB connection.
             "args": [
-                "-M", "tricore_testboard",
+                // Only the TC277 TRB machine seems to support GDB stubs.
+                "-M", "KIT_AURIX_TC277_TRB",
                 "-kernel", "${command:cmake.launchTargetPath}",
                 "-gdb", "tcp::2345",
                 "-S"
