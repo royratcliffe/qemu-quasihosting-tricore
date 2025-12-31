@@ -29,7 +29,7 @@
                 "-d", "cpu_reset",
 
                 "-kernel", "${command:cmake.launchTargetPath}",
-                "-gdb", "tcp::2345",
+                "-s",
                 "-S"
             ],
             "dependsOn": [
