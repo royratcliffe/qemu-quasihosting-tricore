@@ -15,8 +15,8 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "tricore-elf-gdb.exe",
-            "miDebuggerServerAddress": "localhost:2345",
+            "miDebuggerPath": "tricore-elf-gdb",
+            "miDebuggerServerAddress": "localhost:1234",
             "preLaunchTask": "Launch QEMU",
             "postDebugTask": "Terminate QEMU",
             // Use the following gdb command to list the available target architectures:
