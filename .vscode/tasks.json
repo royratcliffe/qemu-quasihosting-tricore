@@ -23,6 +23,11 @@
             "args": [
                 // Only the TC277 TRB machine seems to support GDB stubs.
                 "-M", "KIT_AURIX_TC277_TRB",
+
+                // Create some extra reset output for the problem matcher to catch.
+                // This helps to determine when QEMU has started successfully.
+                "-d", "cpu_reset",
+
                 "-kernel", "${command:cmake.launchTargetPath}",
                 "-gdb", "tcp::2345",
                 "-S"
