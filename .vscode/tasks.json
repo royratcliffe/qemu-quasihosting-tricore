@@ -37,8 +37,8 @@
                 },
                 "background": {
                     "activeOnStart": true,
-                    "beginsPattern": "Including script: .*",
-                    "endsPattern": ".*GDB server with all CPUs started on port.*"
+                    "beginsPattern": "KIT_AURIX_TC277_TRB",
+                    "endsPattern": "CPU Reset"
                 }
             },
             "group": "build",
