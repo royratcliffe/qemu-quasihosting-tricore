@@ -17,6 +17,13 @@ set(CMAKE_SIZE ${TOOLCHAIN_PREFIX}size)
 
 set(CMAKE_EXECUTABLE_SUFFIX_C .elf)
 
+# Disable cores 1 an 2. The emulator only supports core 0.
+# The Infineon start-up software (SSW) requires these definitions.
+# Otherwise, the SSW will try to initialise all three cores,
+# which leads to errors in the emulator.
+add_compile_definitions(IFX_CFG_SSW_ENABLE_TRICORE1=0U)
+add_compile_definitions(IFX_CFG_SSW_ENABLE_TRICORE2=0U)
+
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # Specify compiler flags.
