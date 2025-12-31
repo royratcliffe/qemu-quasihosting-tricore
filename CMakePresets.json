@@ -7,7 +7,9 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "toolchainFile": "${sourceDir}/cmake/tricore-elf-gcc.cmake",
-            "cacheVariables": {}
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
         },
         {
             "name": "Debug",
