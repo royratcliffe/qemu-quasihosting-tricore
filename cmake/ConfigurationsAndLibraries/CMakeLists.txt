@@ -130,11 +130,12 @@ set(ConfigurationsAndLibraries_Sources
     ${CMAKE_SOURCE_DIR}/Libraries/Infra/Platform/Tricore/Compilers/CompilerTasking.c
 )
 
-# Create an object library to compile the Configurations and Libraries sources together.
-# but wihout creating a separate static or shared library file.
-add_library(ConfigurationsAndLibraries OBJECT)
+# Create a static library target for Configurations and Libraries.
+# EXCLUDE_FROM_ALL prevents this target from being built unless explicitly requested.
+add_library(ConfigurationsAndLibraries STATIC EXCLUDE_FROM_ALL)
 
 target_sources(ConfigurationsAndLibraries PRIVATE ${ConfigurationsAndLibraries_Sources})
+
 # The include directories for the target need to be set as PUBLIC
 # to propagating them to targets that link against Libraries.
 target_include_directories(ConfigurationsAndLibraries PUBLIC ${ConfigurationsAndLibraries_Include_Directories})
