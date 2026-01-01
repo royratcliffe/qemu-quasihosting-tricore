@@ -29,9 +29,7 @@ target_sources(a_test PRIVATE
     ${CMAKE_SOURCE_DIR}/Tests/a_test.c
     # Add application sources.
     # Add system and startup sources.
-    ${CMAKE_SOURCE_DIR}/Cpu0_Main.c
-    ${CMAKE_SOURCE_DIR}/Cpu1_Main.c
-    ${CMAKE_SOURCE_DIR}/Cpu2_Main.c
+    ${CMAKE_SOURCE_DIR}/Tests/ssw_tc0.c
 )
 target_link_libraries(a_test
     ConfigurationsAndLibraries
