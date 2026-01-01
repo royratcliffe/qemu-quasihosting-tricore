@@ -1,3 +1,6 @@
+#ifndef SSW_H
+#define SSW_H
+
 #include "Ifx_Ssw_Infra.h"
 
 /*!
@@ -68,3 +71,5 @@ IFX_SSW_INLINE void Ssw_initCSA(unsigned int *csa_begin, unsigned int *csa_end) 
   *prv_csa = 0U;
   Ifx_Ssw_DSYNC();
 }
+
+#endif /* SSW_H */
