@@ -66,7 +66,8 @@ IFX_SSW_INLINE void Ssw_initCSA(unsigned int *csa_begin, unsigned int *csa_end) 
   }
 
   /*
-   * Terminate the linked list.
+   * Terminate the linked list. Apply a data memory barrier to ensure all memory
+   * operations are completed.
    */
   *prv_csa = 0U;
   Ifx_Ssw_DSYNC();
