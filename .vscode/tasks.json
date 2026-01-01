@@ -31,7 +31,8 @@
 
                 // Create some extra reset output for the problem matcher to catch.
                 // This helps to determine when QEMU has started successfully.
-                "-d", "cpu_reset",
+                // Add in_asm to get more detailed output.
+                "-d", "cpu_reset,in_asm",
 
                 "-kernel", "${command:cmake.launchTargetPath}",
                 "-s",
