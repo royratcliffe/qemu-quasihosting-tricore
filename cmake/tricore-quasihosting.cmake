@@ -55,6 +55,7 @@ function(add_tricore_quasihosting_test)
     target_link_options(${ATQT_TEST_NAME} PRIVATE
         ${TriCoreQuasihostingLinkOptions}
         ${ATQT_LINK_OPTIONS}
+        -Wl,-Map,$<TARGET_FILE_BASE_NAME:${ATQT_TEST_NAME}>.map
     )
 
     # Set timeout for the test if specified.
