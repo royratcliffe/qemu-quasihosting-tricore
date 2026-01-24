@@ -1,5 +1,3 @@
-#include "ssw_tc0.h"
-
 #include "ssw.h"
 
 /*
