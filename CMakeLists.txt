@@ -25,6 +25,15 @@ include(CTest)
 include(tricore-quasihosting)
 enable_testing()
 
+# Disable cores 1 an 2. The emulator only supports core 0.
+# The Infineon start-up software (SSW) requires these definitions.
+# Otherwise, the SSW will try to initialise all three cores,
+# which leads to errors in the emulator.
+set(TriCoreQuasihostingCompileDefinitions
+    IFX_CFG_SSW_ENABLE_TRICORE1=0U
+    IFX_CFG_SSW_ENABLE_TRICORE2=0U
+)
+
 set(TriCoreQuasihostingSystemSources
     ${CMAKE_SOURCE_DIR}/Tests/ssw_tc0.c
 )
