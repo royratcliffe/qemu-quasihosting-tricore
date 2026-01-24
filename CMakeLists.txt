@@ -11,6 +11,9 @@ add_executable(${CMAKE_PROJECT_NAME}
     Cpu1_Main.c
     Cpu2_Main.c
 )
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
+    -T ${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl
+)
 
 # Add linked libraries.
 target_link_libraries(${CMAKE_PROJECT_NAME}
@@ -29,6 +32,9 @@ target_sources(exit_test PRIVATE
     # Add application sources.
     # Add system and startup sources.
     ${CMAKE_SOURCE_DIR}/Tests/ssw_tc0.c
+)
+target_link_options(exit_test PRIVATE
+    -T ${CMAKE_SOURCE_DIR}/Tests/Lcf_Gnuc_Tricore_Tc.lsl
 )
 target_link_libraries(exit_test
     ConfigurationsAndLibraries

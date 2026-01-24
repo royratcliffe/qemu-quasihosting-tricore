@@ -33,7 +33,6 @@ set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 
 # Specify linker flags.
-set(CMAKE_C_LINK_FLAGS "-T\"${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl\"")
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -nocrt0 -Wl,--gc-sections -mtc162")
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
 

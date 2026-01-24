@@ -47,14 +47,14 @@ LCF_ISTACK2_SIZE = 1k;
 
 LCF_HEAP_SIZE = 4k;
 
-LCF_DSPR2_START = 0x50000000;
-LCF_DSPR2_SIZE = 120k;
+LCF_DSPR2_START = 0xF0050000;
+LCF_DSPR2_SIZE = 16k;
 
-LCF_DSPR1_START = 0x60000000;
-LCF_DSPR1_SIZE = 120k;
+LCF_DSPR1_START = 0xD0000000;
+LCF_DSPR1_SIZE = 48k;
 
-LCF_DSPR0_START = 0x70000000;
-LCF_DSPR0_SIZE = 112k;
+LCF_DSPR0_START = 0xA1000000;
+LCF_DSPR0_SIZE = 4m;
 
 LCF_CSA2_OFFSET =    (LCF_DSPR2_SIZE - 1k - LCF_CSA2_SIZE);
 LCF_ISTACK2_OFFSET = (LCF_CSA2_OFFSET - 256 - LCF_ISTACK2_SIZE);
@@ -97,12 +97,12 @@ RESET = LCF_STARTPTR_NC_CPU0;
 MEMORY
 {
     dsram2_local (w!xp): org = 0xd0000000, len = 96K
-    dsram2 (w!xp): org = 0x50000000, len = 96K
-    psram2 (w!xp): org = 0x50100000, len = 64K
+    dsram2 (w!xp): org = 0xf0050000, len = 16K
+    psram2 (w!xp): org = 0xf0060000, len = 32K
 
     dsram1_local (w!xp): org = 0xd0000000, len = 240K
-    dsram1 (w!xp): org = 0x60000000, len = 240K
-    psram1 (w!xp): org = 0x60100000, len = 64K
+    dsram1 (w!xp): org = 0xD0000000, len = 48K
+    psram1 (w!xp): org = 0xD4000000, len = 48K
 
     dsram0_local (w!xp): org = 0xd0000000, len = 240K
     dsram0 (w!xp): org = 0x70000000, len = 240K
