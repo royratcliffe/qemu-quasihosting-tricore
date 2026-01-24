@@ -112,8 +112,6 @@ REGION_ALIAS( default_rom , pfls0)
         .interface_const (0x80000020) : { __IF_CONST = .; KEEP (*(.interface_const)); } > pfls0
         PROVIDE(__START0 = LCF_STARTPTR_NC_CPU0);
         PROVIDE(__ENABLE_INDIVIDUAL_C_INIT_CPU0 = 0); /* Not used */
-        PROVIDE(__ENABLE_INDIVIDUAL_C_INIT_CPU1 = 0);
-        PROVIDE(__ENABLE_INDIVIDUAL_C_INIT_CPU2 = 0);
     }
 
     /*Fixed memory Allocations for Trap Vector Table*/
