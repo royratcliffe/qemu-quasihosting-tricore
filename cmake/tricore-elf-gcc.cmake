@@ -44,7 +44,7 @@ set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
 # none                 empty machine
 # tricore_testboard    a minimal TriCore board
 set(CMAKE_CROSSCOMPILING_EMULATOR qemu-system-tricore
-    -machine KIT_AURIX_TC277_TRB
+    -machine tricore_testboard
     -nographic
     -no-reboot
     -kernel
