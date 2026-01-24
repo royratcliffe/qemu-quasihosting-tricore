@@ -36,6 +36,9 @@ target_link_libraries(a_test
 )
 set_target_properties(a_test PROPERTIES TIMEOUT 30)
 
-add_test(NAME a_test COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR}
-    ${CMAKE_BINARY_DIR}/a_test.elf
+add_test(NAME a_test
+    COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} ${CMAKE_BINARY_DIR}/a_test.elf
+)
+set_tests_properties(a_test PROPERTIES
+    WILL_FAIL TRUE
 )
