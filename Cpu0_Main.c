@@ -41,10 +41,6 @@
 
 IFX_ALIGN(4) IfxCpu_syncEvent g_cpuSyncEvent = 0;
 
-void _init(void)
-{
-}
-
 void core0_main(void)
 {
     IfxCpu_enableInterrupts();
