@@ -60,6 +60,20 @@ LCF_STARTPTR_NC_CPU0 = 0xA0000000;
 
 RESET = LCF_STARTPTR_NC_CPU0;
 
+/*
+
+| Address    | Region Name | Size     | Description            |
+|------------|-------------|----------|------------------------|
+| 0x80000000 | ext_cram    | 2 MiB    | External Code RAM      |
+| 0xa1000000 | ext_dram    | 4 MiB    | External Data RAM      |
+| 0xd0000000 | int_dram    | 48 KiB   | Internal Data RAM      |
+| 0xd4000000 | int_cram    | 48 KiB   | Internal Code RAM      |
+| 0xf0000000 | test_dev    | One word | Test Device I/O Memory |
+| 0xf0050000 | pcp_data    | 16 KiB   | PCP Data RAM           |
+| 0xf0060000 | pcp_text    | 32 KiB   | PCP Code RAM           |
+
+*/
+
 MEMORY
 {
     dsram0_local (w!xp): org = 0xd0000000, len = 240K
