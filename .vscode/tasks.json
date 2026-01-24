@@ -55,7 +55,7 @@
                 ],
                 "background": {
                     "activeOnStart": true,
-                    "beginsPattern": "KIT_AURIX_TC277_TRB",
+                    "beginsPattern": "qemu-system-tricore",
                     "endsPattern": "CPU Reset"
                 }
             },
