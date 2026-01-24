@@ -25,26 +25,22 @@ include(CTest)
 include(tricore-quasihosting)
 enable_testing()
 
-# The test uses TriCore test device to report results back to the host.
-# The test has a timeout of 30 seconds.
-add_executable(exit_test)
-target_sources(exit_test PRIVATE
-    # Add test sources.
-    ${CMAKE_SOURCE_DIR}/Tests/exit_test.c
-    # Add application sources.
-    # Add system and startup sources.
+set(TriCoreQuasihostingSystemSources
     ${CMAKE_SOURCE_DIR}/Tests/ssw_tc0.c
 )
-target_link_options(exit_test PRIVATE
-    -T ${CMAKE_SOURCE_DIR}/Tests/Lcf_Gnuc_Tricore_Tc.lsl
-)
-target_link_libraries(exit_test
+set(TriCoreQuasihostingLinkLibraries
     ConfigurationsAndLibraries
 )
-set_target_properties(exit_test PROPERTIES TIMEOUT 30)
+set(TriCoreQuasihostingLinkOptions
+    -T ${CMAKE_SOURCE_DIR}/Tests/Lcf_Gnuc_Tricore_Tc.lsl
+)
 
-add_test(NAME exit_test
-    COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} ${CMAKE_BINARY_DIR}/exit_test.elf
+# The test uses TriCore test device to report results back to the host.
+# The test has a timeout of 30 seconds.
+add_tricore_quasihosting_test(TEST_NAME exit_test
+    TEST_SOURCES
+        ${CMAKE_SOURCE_DIR}/Tests/exit_test.c
+    TIMEOUT 30
 )
 set_tests_properties(exit_test PROPERTIES
     WILL_FAIL TRUE
