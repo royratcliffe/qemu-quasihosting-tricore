@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 project(qemu_semihosting_tricore LANGUAGES C ASM)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -21,6 +22,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 )
 
 include(CTest)
+include(tricore-quasihosting)
 enable_testing()
 
 # The test uses TriCore test device to report results back to the host.
