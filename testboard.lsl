@@ -76,21 +76,21 @@ RESET = LCF_STARTPTR_NC_CPU0;
 
 MEMORY
 {
-    dsram0_local (w!xp): org = 0xd0000000, len = 240K
-    dsram0 (w!xp): org = 0x70000000, len = 240K
-    psram0 (w!xp): org = 0x70100000, len = 64K
+    dsram0_local (w!xp): org = 0xd0000000, len = 48K
+    dsram0 (w!xp):       org = 0xa1000000, len = 4M
+    psram0 (w!xp):       org = 0xd4000000, len = 48K
 
-    psram_local (w!xp): org = 0xc0000000, len = 64K
+    psram_local (w!xp):  org = 0xf0060000, len = 32K
 
-    pfls0 (rx!p): org = 0x80000000, len = 3M
-    pfls0_nc (rx!p): org = 0xa0000000, len = 3M
+    pfls0 (rx!p):        org = 0x80000000, len = 2M
+    pfls0_nc (rx!p):     org = 0xa0000000, len = 2M
 
-    dfls0 (rx!p): org = 0xaf000000, len = 256K
+    dfls0 (rx!p):        org = 0xaf000000, len = 0K
 
-    ucb (rx!p): org = 0xaf400000, len = 24K
+    ucb (rx!p):          org = 0xaf400000, len = 0K
 
-    cpu0_dlmu (w!xp): org = 0x90000000, len = 64K
-    cpu0_dlmu_nc (w!xp): org = 0xb0000000, len = 64K
+    cpu0_dlmu (w!xp):    org = 0x90000000, len = 0K
+    cpu0_dlmu_nc (w!xp): org = 0xb0000000, len = 0K
 }
 
 /* map local memory address to a global address */
