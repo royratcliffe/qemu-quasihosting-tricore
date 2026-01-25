@@ -20,7 +20,8 @@ set(CMAKE_EXECUTABLE_SUFFIX_C .elf)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # Specify compiler flags.
-set(CMAKE_C_FLAGS "--std=c99 -Wall -fmessage-length=0 -fno-common -fstrict-volatile-bitfields -fdata-sections -ffunction-sections -mtc162")
+# Option --std=c99 is not specified because it precludes GNU extensions.
+set(CMAKE_C_FLAGS "-Wall -fmessage-length=0 -fno-common -fstrict-volatile-bitfields -fdata-sections -ffunction-sections -mtc162")
 
 set(CMAKE_C_FLAGS_DEBUG "-O0 -g3")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
