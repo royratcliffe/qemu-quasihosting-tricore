@@ -44,7 +44,10 @@ set(ConfigurationsAndLibraries_Include_Directories
     ${CMAKE_SOURCE_DIR}/Libraries/Service/CpuGeneric
     ${CMAKE_SOURCE_DIR}/Libraries/Service/CpuGeneric/_Utilities
     ${CMAKE_SOURCE_DIR}/Libraries/Service/CpuGeneric/SysSe
-    ${CMAKE_SOURCE_DIR}/Libraries/Service/CpuGeneric/SysSe/Bsp
+    # Do not include the Bsp directory here. It defines Assert.h which conflicts
+    # with the standard assert.h on platforms that use case-insensitive file
+    # systems, e.g. Windows.
+    # ${CMAKE_SOURCE_DIR}/Libraries/Service/CpuGeneric/SysSe/Bsp
 )
 
 set(ConfigurationsAndLibraries_Sources
