@@ -44,7 +44,7 @@ function(add_tricore_quasihosting_test)
     target_include_directories(${ATQT_TEST_NAME} PRIVATE ${TriCoreQuasihostingIncludeDirectories})
     target_compile_definitions(${ATQT_TEST_NAME} PRIVATE ${TriCoreQuasihostingCompileDefinitions})
 
-    # Link against the any additional libraries, e.g. TriCore math.
+    # Link against any additional libraries, e.g. TriCore math.
     target_link_libraries(${ATQT_TEST_NAME} PRIVATE
         ${TriCoreQuasihostingLinkLibraries}
         ${ATQT_LINK_LIBRARIES}
