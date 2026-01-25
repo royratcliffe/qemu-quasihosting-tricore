@@ -1,9 +1,9 @@
 int core0_main(void) {
   /*
-   * Write the string "EXIT\n" to the TriCore test device to indicate test
+   * Write the string "EXIT" to the TriCore test device to indicate test
    * completion.
    */
-  for (const char *con = "EXIT\n"; *con != '\0'; con++) {
+  for (const char *con = "EXIT"; *con != '\0'; con++) {
     *(volatile int *)0xf0000000U = 0x100 | (*con & 0xff);
   }
 
