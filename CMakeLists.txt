@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(qemu_semihosting_tricore LANGUAGES C ASM)
+project(qemu_quasihosting_tricore LANGUAGES C ASM)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
