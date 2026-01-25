@@ -42,7 +42,7 @@ set(TriCoreQuasihostingLinkLibraries
     ConfigurationsAndLibraries
 )
 set(TriCoreQuasihostingLinkOptions
-    -T ${CMAKE_SOURCE_DIR}/testboard.lsl
+    -T ${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl
 )
 
 # The test uses TriCore test device to report results back to the host.

@@ -23,7 +23,7 @@
             "args": [
                 // Use the TriCore test board machine model. It supports a pseudo-test device
                 // at address 0xf0000000 for simple semihosting operations.
-                "-M", "tricore_testboard",
+                "-M", "KIT_AURIX_TC277_TRB",
 
                 // Use the console for serial I/O. QEMU's default is to create a
                 // separate window for serial I/O. The QEMU monitor will appear
