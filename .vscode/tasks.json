@@ -10,19 +10,9 @@
             // to adjust the command to point to qemu-system-tricore.exe after
             // installation.
             "command": "qemu-system-tricore",
-            // Do not include the normal QEMU no-graphic and no-reboot options.
-            // Option -nographic forces QEMU to use the console for serial I/O.
-            // Option -no-reboot prevents QEMU from rebooting on exit, which
-            // interferes with the debugger session.
-            //
-            // Note that the GDB server options are required to match those
-            // specified in launch.json for the debugger to connect. Option -s
-            // is shorthand for -gdb tcp::1234 which starts a GDB server
-            // listening on localhost port 1234. Option -S makes QEMU start in
-            // paused mode, waiting for a GDB connection.
             "args": [
-                // Use the TriCore test board machine model. It supports a pseudo-test device
-                // at address 0xf0000000 for simple semihosting operations.
+                // Use the TriCore TC277 machine model. It supports a pseudo-test device
+                // at address 0xf0000000 for simple quasihosting operations.
                 "-M", "KIT_AURIX_TC277_TRB",
 
                 // Use the console for serial I/O. QEMU's default is to create a
