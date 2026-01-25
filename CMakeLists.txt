@@ -13,6 +13,7 @@ add_executable(${CMAKE_PROJECT_NAME}
     Cpu2_Main.c
 )
 target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
+    -nocrt0
     -T ${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl
     -Wl,-Map,$<TARGET_FILE_BASE_NAME:${CMAKE_PROJECT_NAME}>.map
 )
