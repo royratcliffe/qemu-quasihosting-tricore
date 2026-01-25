@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:cmake.launchTargetPath}",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "tricore-elf-gdb",
+            "miDebuggerServerAddress": "localhost:1234",
+            "preLaunchTask": "Launch QEMU",
+            "postDebugTask": "Terminate QEMU",
+            // Use the following gdb command to list the available target architectures:
+            //
+            //      set architecture
+            //
+            // The target architecture for TriCore V1.6.2 is specified below but does not work with the
+            // current version of cppdbg (as of December 2025).
+            //
+            //      "targetArchitecture": "TriCore:V1_6_2",
+            //
+            // As a workaround, the target architecture is set using the "setupCommands" below.
+            "setupCommands": [
+                {
+                    "description": "Set the target architecture to TriCore V1.6.2",
+                    "text": "-gdb-set architecture TriCore:V1_6_2",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

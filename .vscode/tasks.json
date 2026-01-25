@@ -1,0 +1,74 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Launch QEMU",
+            "type": "shell",
+            // Requires QEMU to be installed and available in PATH. You may need
+            // to adjust the command to point to qemu-system-tricore.exe after
+            // installation.
+            "command": "qemu-system-tricore",
+            "args": [
+                // Use the TriCore TC277 machine model. It supports a pseudo-test device
+                // at address 0xf0000000 for simple quasihosting operations.
+                "-M", "KIT_AURIX_TC277_TRB",
+
+                // Use the console for serial I/O. QEMU's default is to create a
+                // separate window for serial I/O. The QEMU monitor will appear
+                // in the launch terminal.
+                "-nographic",
+
+                // Create some extra reset output for the problem matcher to catch.
+                // This helps to determine when QEMU has started successfully.
+                // Add in_asm to get more detailed output.
+                "-d", "cpu_reset,guest_errors",
+
+                "-kernel", "${command:cmake.launchTargetPath}",
+                "-s",
+                "-S"
+            ],
+            "dependsOn": [
+                "CMake: build",
+            ],
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "qemu",
+                "pattern": [
+                    {
+                        "regexp": "^(.*)$",
+                        "file": 1,
+                        "location": 2,
+                        "message": 3
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "qemu-system-tricore",
+                    "endsPattern": "CPU Reset"
+                }
+            },
+            "group": "test",
+            "detail": "Launch QEMU emulator",
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Terminate QEMU",
+            "command": "${input:terminate}",
+            "type": "shell",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "terminate",
+            "type": "command",
+            "command": "workbench.action.tasks.terminate",
+            "args": "terminateAll"
+        }
+    ]
+}
