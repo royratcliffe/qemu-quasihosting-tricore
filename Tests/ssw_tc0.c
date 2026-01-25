@@ -13,7 +13,7 @@
 #pragma GCC optimize "O2"
 #endif
 
-extern void core0_main(void);
+extern void core0_main(void) __attribute__((noreturn));
 
 /*
  * Include linker symbols for core 0. Declares external symbols used for stack
