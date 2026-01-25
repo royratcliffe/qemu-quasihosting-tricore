@@ -40,6 +40,7 @@ set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
 set(CMAKE_CROSSCOMPILING_EMULATOR qemu-system-tricore
     -machine KIT_AURIX_TC277_TRB
     -nographic
+    -monitor none
     -no-reboot
     -kernel
 )
