@@ -38,6 +38,10 @@ set(TriCoreQuasihostingCompileDefinitions
 
 set(TriCoreQuasihostingSystemSources
     ${CMAKE_SOURCE_DIR}/Tests/ssw_tc0.c
+    ${CMAKE_SOURCE_DIR}/Tests/stdlib.c
+)
+set(TriCoreQuasihostingIncludeDirectories
+    ${CMAKE_SOURCE_DIR}
 )
 set(TriCoreQuasihostingLinkLibraries
     ConfigurationsAndLibraries
@@ -54,5 +58,17 @@ add_tricore_quasihosting_test(TEST_NAME exit_test
     TIMEOUT 30
 )
 set_tests_properties(exit_test PROPERTIES
+    WILL_FAIL TRUE
+)
+
+add_tricore_quasihosting_test(TEST_NAME assert_true
+    TEST_SOURCES
+        ${CMAKE_SOURCE_DIR}/Tests/assert_true.c
+)
+add_tricore_quasihosting_test(TEST_NAME assert_false
+    TEST_SOURCES
+        ${CMAKE_SOURCE_DIR}/Tests/assert_false.c
+)
+set_tests_properties(assert_false PROPERTIES
     WILL_FAIL TRUE
 )
