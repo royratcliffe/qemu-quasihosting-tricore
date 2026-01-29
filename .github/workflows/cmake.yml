@@ -25,20 +25,26 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install TriCore GCC Toolchain
-      # Install the TriCore GCC toolchain on Linux and Windows runners.
+    - name: Install TriCore GCC Toolchain (Linux)
+      # Install the TriCore GCC toolchain on Linux runners.
+      if: runner.os == 'Linux'
       run: |
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          wget https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-linux.tar.gz
-          mkdir -p /opt/tricore-gcc-1.0.1-linux
-          tar -xzf tricore-gcc-1.0.1-linux.tar.gz -C /opt/tricore-gcc-1.0.1-linux
-          echo "/opt/tricore-gcc-1.0.1-linux/bin" >> "$GITHUB_PATH"
-        elif [ "$RUNNER_OS" == "Windows" ]; then
-          curl -L -o tricore-gcc-1.0.1-win32.zip https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-win32.zip
-          powershell -Command "Expand-Archive tricore-gcc-1.0.1-win32.zip -DestinationPath 'C:/Program Files/tricore-gcc-1.0.1-win32'"
-          echo "C:/Program Files/tricore-gcc-1.0.1-win32/bin" >> "$GITHUB_PATH"
-        fi
+        wget https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-linux.tar.gz
+        mkdir -p /opt/tricore-gcc-1.0.1-linux
+        tar -xzf tricore-gcc-1.0.1-linux.tar.gz -C /opt/tricore-gcc-1.0.1-linux
+        echo "/opt/tricore-gcc-1.0.1-linux/bin" >> "$GITHUB_PATH"
       shell: bash
+
+    - name: Install TriCore GCC Toolchain (Windows)
+      # Install the TriCore GCC toolchain on Windows runners.
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        Invoke-WebRequest `
+          -Uri "https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-win32.zip" `
+          -OutFile "tricore-gcc-1.0.1-win32.zip"
+        Expand-Archive -Path "tricore-gcc-1.0.1-win32.zip" -DestinationPath "C:/tricore-gcc-1.0.1-win32"
+        Add-Content -Path $env:GITHUB_PATH -Value "C:/tricore-gcc-1.0.1-win32/bin"
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into
