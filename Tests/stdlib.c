@@ -5,7 +5,7 @@
 #include "rwonce.h"
 #include "tricore_testdevice.h"
 
-int write(int fd, const void *buf, size_t nbyte) {
+ssize_t write(int fd, const void *buf, size_t nbyte) {
   switch (fd) {
   case 1:
     /*
