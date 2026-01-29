@@ -30,6 +30,7 @@ jobs:
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
           wget https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-linux.tar.gz
+          mkdir -p /opt/tricore-gcc-1.0.1-linux
           tar -xzf tricore-gcc-1.0.1-linux.tar.gz -C /opt/tricore-gcc-1.0.1-linux
           echo "/opt/tricore-gcc-1.0.1-linux/bin" >> "$GITHUB_PATH"
         elif [ "$RUNNER_OS" == "Windows" ]; then
