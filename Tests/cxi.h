@@ -16,7 +16,7 @@
  * \return The CXI value corresponding to the CSA pointer.
  */
 #define CXI_OF_CSA(csa_adr)                                                                                            \
-  ((((uint32)(csa_adr) & ((uint32)0xfU << 28U)) >> 12U) | (((uint32)(csa_adr) & ((uint32)0xffffU << 6U)) >> 6U))
+  ((((uint32)(csa_adr) & (0xfU << 28U)) >> 12U) | (((uint32)(csa_adr) & (0xffffU << 6U)) >> 6U))
 
 /*!
  * \brief Calculate the CSA pointer for a given CXI value.
