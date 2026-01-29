@@ -29,7 +29,7 @@ jobs:
       # Install the TriCore GCC toolchain on Linux runners.
       if: runner.os == 'Linux'
       run: |
-        wget https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-linux.tar.gz
+        curl -LO https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-linux.tar.gz
         mkdir -p /opt/tricore-gcc-1.0.1-linux
         tar -xzf tricore-gcc-1.0.1-linux.tar.gz -C /opt/tricore-gcc-1.0.1-linux
         echo "/opt/tricore-gcc-1.0.1-linux/bin" >> "$GITHUB_PATH"
