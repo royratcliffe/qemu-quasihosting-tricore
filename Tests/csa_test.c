@@ -1,4 +1,5 @@
 #include "core.h"
+#include "cxi.h"
 
 #include <Ifx_Ssw_Infra.h>
 #include <Platform_Types.h>
@@ -22,12 +23,26 @@ IFXCOMPILER_CORE_LINKER_SYMBOLS(0);
  * CSA can lead to system instability and unpredictable behaviour.
  */
 void core0_main(void) {
-  (void)printf("csa test\n");
-
   /*
    * Check that the CSA area is 64-byte aligned as required.
    */
   assert(((uint32)__CSA(0) & (CSA_SIZE_BYTES - 1)) == 0);
   assert(((uint32)__CSA_END(0) & (CSA_SIZE_BYTES - 1)) == 0);
+
+  /*
+   * Print the FCX and LCX register values and the linked list of CSAs for
+   * verification purposes.
+   */
+  const uint32 fcx = Ifx_Ssw_MFCR(CPU_FCX);
+  const uint32 lcx = Ifx_Ssw_MFCR(CPU_LCX);
+  (void)printf("FCX: 0x%08x, LCX: 0x%08x\n", (unsigned)fcx, (unsigned)lcx);
+  for (uint32 cxi = fcx; cxi != lcx;) {
+    uint32 *csa = CSA_OF_CXI(cxi);
+    (void)printf("  CSA at %p\n", (void *)csa);
+    assert(csa >= (uint32 *)__CSA(0) && csa < (uint32 *)__CSA_END(0));
+    assert(CXI_OF_CSA(csa) == cxi);
+    cxi = *csa;
+  }
+
   exit(0);
 }
