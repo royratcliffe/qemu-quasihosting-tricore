@@ -8,14 +8,16 @@
 
 #pragma once
 
+#include <Platform_Types.h>
+
 /*!
  * \brief Calculate the CXI value for a given CSA pointer.
- * \param csa_ptr Pointer to the CSA.
+ * \param csa_adr Pointer to the CSA.
  * \return The CXI value corresponding to the CSA pointer.
  */
-#define CXI_OF_CSA(csa_ptr)                                                                                            \
-  ((((unsigned int)(csa_ptr) & ((unsigned int)0xfU << 28U)) >> 12U) |                                                  \
-   (((unsigned int)(csa_ptr) & ((unsigned int)0xffffU << 6U)) >> 6U))
+#define CXI_OF_CSA(csa_adr)                                                                                            \
+  ((((uint32)(csa_adr) & ((uint32)0xfU << 28U)) >> 12U) |                                                  \
+   (((uint32)(csa_adr) & ((uint32)0xffffU << 6U)) >> 6U))
 
 /*!
  * \brief Calculate the CSA pointer for a given CXI value.
