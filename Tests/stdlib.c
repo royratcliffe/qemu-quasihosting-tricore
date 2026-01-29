@@ -13,7 +13,7 @@ ssize_t write(int fd, const void *buf, size_t nbyte) {
      * character is written exactly once using the WRITE_ONCE macro.
      */
     for (size_t i = 0; i < nbyte; i++) {
-      WRITE_ONCE(*TRICORE_TESTDEVICE, 0x100U | (*(const char *)buf++ & 0xffU));
+      WRITE_ONCE(*TRICORE_TESTDEVICE, 0x100U | (((const char *)buf)[i] & 0xffU));
     }
     /*
      * Flush the output buffer by writing a magic value to the TriCore test
