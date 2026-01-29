@@ -1,7 +1,31 @@
+#include <errno.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "rwonce.h"
 #include "tricore_testdevice.h"
+
+int write(int fd, const void *buf, size_t nbyte) {
+  switch (fd) {
+  case 1:
+    /*
+     * Write each character to the TriCore test device, ensuring that each
+     * character is written exactly once using the WRITE_ONCE macro.
+     */
+    for (size_t i = 0; i < nbyte; i++) {
+      WRITE_ONCE(*TRICORE_TESTDEVICE, 0x100U | (*(const char *)buf++ & 0xffU));
+    }
+    /*
+     * Flush the output buffer by writing a magic value to the TriCore test
+     * device. The test device flushes the emulator's standard output buffer
+     * upon receiving this value.
+     */
+    WRITE_ONCE(*TRICORE_TESTDEVICE, 0x200U);
+    return nbyte;
+  }
+  errno = EBADF;
+  return -1;
+}
 
 /*
  * Exit the program by writing the status code to the TriCore test device. This
