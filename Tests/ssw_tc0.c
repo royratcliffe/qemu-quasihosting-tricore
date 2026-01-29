@@ -48,6 +48,11 @@ void _START(void) {
   Ifx_Ssw_ISYNC();
 
   /*
+   * Initialise C variables: initialised and blank static storage.
+   */
+  Ifx_C_Init();
+
+  /*
    * Jump to the main function of core 0.
    */
   Ifx_Ssw_jumpToFunction(core0_main);
