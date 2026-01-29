@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
 
+    env:
+      TRICORE_GCC_VERSION: 1.0.1
+
     strategy:
       # Set fail-fast to false to ensure that feedback is delivered for all
       # matrix combinations. Consider changing this to true when your workflow
@@ -29,10 +32,10 @@ jobs:
       # Install the TriCore GCC toolchain on Linux runners.
       if: runner.os == 'Linux'
       run: |
-        curl -LO https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-linux.tar.gz
-        mkdir -p /opt/tricore-gcc-1.0.1-linux
-        tar -xzf tricore-gcc-1.0.1-linux.tar.gz -C /opt/tricore-gcc-1.0.1-linux
-        echo "/opt/tricore-gcc-1.0.1-linux/bin" >> "$GITHUB_PATH"
+        curl -LO https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/${{ env.TRICORE_GCC_VERSION }}/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-linux.tar.gz
+        mkdir -p /opt/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-linux
+        tar -xzf tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-linux.tar.gz -C /opt/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-linux
+        echo "/opt/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-linux/bin" >> "$GITHUB_PATH"
       shell: bash
 
     - name: Install TriCore GCC Toolchain (Windows)
@@ -41,10 +44,10 @@ jobs:
       shell: pwsh
       run: |
         Invoke-WebRequest `
-          -Uri "https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/1.0.1/tricore-gcc-1.0.1-win32.zip" `
-          -OutFile "tricore-gcc-1.0.1-win32.zip"
-        Expand-Archive -Path "tricore-gcc-1.0.1-win32.zip" -DestinationPath "C:/tricore-gcc-1.0.1-win32"
-        Add-Content -Path $env:GITHUB_PATH -Value "C:/tricore-gcc-1.0.1-win32/bin"
+          -Uri "https://github.com/royratcliffe/tricore-gcc-toolchain/releases/download/${{ env.TRICORE_GCC_VERSION }}/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-win32.zip" `
+          -OutFile "tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-win32.zip"
+        Expand-Archive -Path "tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-win32.zip" -DestinationPath "C:/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-win32"
+        Add-Content -Path $env:GITHUB_PATH -Value "C:/tricore-gcc-${{ env.TRICORE_GCC_VERSION }}-win32/bin"
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into
