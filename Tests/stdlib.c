@@ -1,11 +1,16 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "rwonce.h"
 #include "tricore_testdevice.h"
 
-ssize_t write(int fd, const void *buf, size_t nbyte) {
+/*
+ * Note that Unix write returns ssize_t, which is signed according to POSIX.
+ * Newlib does not follow this convention. It returns int instead.
+ */
+int write(int fd, const void *buf, size_t nbyte) {
   switch (fd) {
   case 1:
     /*
