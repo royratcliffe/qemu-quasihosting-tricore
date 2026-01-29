@@ -1,4 +1,4 @@
-
+[![Cross-Compiling on Linux and Windows](https://github.com/royratcliffe/qemu-quasihosting-tricore/actions/workflows/cmake.yml/badge.svg)](https://github.com/royratcliffe/qemu-quasihosting-tricore/actions/workflows/cmake.yml)
 
 Infineon AURIX TriCore [\[1\]](#ref-infineon_tricore_arch_manual_v1),
 [\[2\]](#ref-infineon_tricore_arch_manual_v2)! It’s a fascinating piece
