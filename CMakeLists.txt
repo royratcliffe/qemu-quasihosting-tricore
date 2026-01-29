@@ -65,6 +65,7 @@ add_tricore_quasihosting_test(TEST_NAME assert_true
     TEST_SOURCES
         ${CMAKE_SOURCE_DIR}/Tests/assert_true.c
 )
+
 add_tricore_quasihosting_test(TEST_NAME assert_false
     TEST_SOURCES
         ${CMAKE_SOURCE_DIR}/Tests/assert_false.c
@@ -72,3 +73,5 @@ add_tricore_quasihosting_test(TEST_NAME assert_false
 set_tests_properties(assert_false PROPERTIES
     WILL_FAIL TRUE
 )
+
+add_tricore_quasihosting_test(TEST_NAME csa TEST_SOURCES ${CMAKE_SOURCE_DIR}/Tests/csa_test.c)
