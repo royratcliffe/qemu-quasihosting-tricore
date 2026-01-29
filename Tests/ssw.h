@@ -39,10 +39,10 @@ IFX_SSW_INLINE void Ssw_initCSA(unsigned int *csa_begin, unsigned int *csa_end) 
    *
    *    (((unsigned int)csa_end - (unsigned int)csa_begin) / (IFX_SSW_CSA_SIZE << 2U))
    *
-   * Why subtract three from the LCX index? Because LCX points to the last but one CSA
-   * in the linked list, so that when the last CSA is allocated, LCX will point to
-   * the last CSA, and when that is allocated, LCX will become equal to FCX,
-   * indicating CSA depletion.
+   * Why subtract three from the LCX index? Because LCX points to the last but
+   * two context save areas in the linked list, so that when the last CSA is
+   * allocated, LCX will point to the last CSA, and when that is allocated, LCX
+   * will become equal to FCX, indicating CSA depletion.
    */
   const unsigned int num_of_csa = (csa_end - csa_begin) / IFX_SSW_CSA_SIZE;
   const unsigned int lcx_idx = num_of_csa - 3U;
