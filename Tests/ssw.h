@@ -1,7 +1,9 @@
 #ifndef SSW_H
 #define SSW_H
 
-#include "Ifx_Ssw_Infra.h"
+#include <Ifx_Ssw_Infra.h>
+
+#include "cxi.h"
 
 /*!
  * \brief Initialise the Context Save Area (CSA) linked list.
@@ -47,8 +49,7 @@ IFX_SSW_INLINE void Ssw_initCSA(unsigned int *csa_begin, unsigned int *csa_end) 
    */
   for (unsigned int csa_idx = 0U; csa_idx < num_of_csa; csa_idx++) {
     unsigned int cxi_adr = (unsigned int)nxt_csa;
-    unsigned int cxi_val =
-        ((cxi_adr & ((unsigned int)0xfU << 28U)) >> 12U) | ((cxi_adr & ((unsigned int)0xffffU << 6U)) >> 6U);
+    unsigned int cxi_val = CXI_OF_CSA(nxt_csa);
 
     /*
      * Link the previous CSA to the current one. For the first CSA, set FCX
