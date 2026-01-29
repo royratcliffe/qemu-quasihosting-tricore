@@ -14,14 +14,12 @@
  * calculated based on the provided begin and end pointers.
  * \note The function ensures that all memory operations are completed before
  * returning by executing a DSYNC instruction.
- * \note This function \e must always be an inline function to avoid stack usage
- * before the CSA is initialised. Thus, it is defined with the \c IFX_SSW_INLINE
- * macro. If this function were to be called as a regular function, it would
- * require a CSA for saving the context, which would lead to a deadlock situation
- * since the CSA linked list is not yet initialised.
- * \note Manifest constant \c IFX_SSW_INLINE is not just static and inline. It
- * declares an always_inline function. This is important to avoid function call
- * overhead and stack usage before CSA initialisation.
+ * \note This function \e must always be declared with the \c IFX_SSW_INLINE
+ * macro, which declares it as an \c always_inline function. This avoids any
+ * function call overhead and stack usage before the CSA is initialised;
+ * otherwise, calling it as a regular function would require a CSA for saving
+ * the context, leading to a deadlock situation, since the CSA linked list is
+ * not yet initialised.
  * \warning This function should be called only once during system initialisation
  * and before any context switch or interrupt handling occurs.
  * \warning Incorrect initialisation of the CSA linked list can lead to system
