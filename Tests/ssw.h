@@ -1,7 +1,9 @@
 #ifndef SSW_H
 #define SSW_H
 
-#include "Ifx_Ssw_Infra.h"
+#include <Ifx_Ssw_Infra.h>
+
+#include "cxi.h"
 
 /*!
  * \brief Initialise the Context Save Area (CSA) linked list.
@@ -36,6 +38,11 @@ IFX_SSW_INLINE void Ssw_initCSA(unsigned int *csa_begin, unsigned int *csa_end) 
    * calculated as:
    *
    *    (((unsigned int)csa_end - (unsigned int)csa_begin) / (IFX_SSW_CSA_SIZE << 2U))
+   *
+   * Why subtract three from the LCX index? Because LCX points to the last but
+   * two context save areas in the linked list, so that when the last CSA is
+   * allocated, LCX will point to the last CSA, and when that is allocated, LCX
+   * will become equal to FCX, indicating CSA depletion.
    */
   const unsigned int num_of_csa = (csa_end - csa_begin) / IFX_SSW_CSA_SIZE;
   const unsigned int lcx_idx = num_of_csa - 3U;
@@ -46,9 +53,7 @@ IFX_SSW_INLINE void Ssw_initCSA(unsigned int *csa_begin, unsigned int *csa_end) 
    * Iterate over all CSAs and link them in a linked list.
    */
   for (unsigned int csa_idx = 0U; csa_idx < num_of_csa; csa_idx++) {
-    unsigned int cxi_adr = (unsigned int)nxt_csa;
-    unsigned int cxi_val =
-        ((cxi_adr & ((unsigned int)0xfU << 28U)) >> 12U) | ((cxi_adr & ((unsigned int)0xffffU << 6U)) >> 6U);
+    unsigned int cxi_val = CXI_OF_CSA(nxt_csa);
 
     /*
      * Link the previous CSA to the current one. For the first CSA, set FCX

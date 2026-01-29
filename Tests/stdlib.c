@@ -13,6 +13,7 @@
 int write(int fd, const void *buf, size_t nbyte) {
   switch (fd) {
   case 1:
+  case 2:
     /*
      * Write each character to the TriCore test device, ensuring that each
      * character is written exactly once using the WRITE_ONCE macro.
