@@ -29,8 +29,15 @@ set(CMAKE_C_FLAGS_RELEASE "-O3")
 # Specify linker flags.
 # Do not specify linking the standard C runtime startup files.
 # Let the specific target specify this (if needed).
+#
+# Disable the RWX segment warning.
+# On TriCore, the DLMU segments are marked as read-write-execute, which is
+# necessary for the SSW to function correctly. However, this causes a warning
+# during linking. Since this is intentional and does not indicate a problem, we
+# can suppress the warning.
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--gc-sections -mtc162")
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--no-warn-rwx-segment")
 
 # QEMU System TriCore emulator configuration for cross-compiling tests.
 # qemu-system-tricore.exe" -machine help
