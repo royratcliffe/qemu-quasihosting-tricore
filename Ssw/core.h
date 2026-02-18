@@ -35,6 +35,7 @@ void core2_main(void) __attribute__((noreturn));
  * to indicate the reason for exit, such as test success or failure. This
  * function is marked with the "no return" attribute to indicate that it does
  * not return to the caller.
+ * \param code The exit code to be reported to the TriCore test device.
  */
 void core_exit(int code) __attribute__((noreturn));
 
@@ -43,5 +44,9 @@ void core_exit(int code) __attribute__((noreturn));
  * \details This function formats and prints a string to the standard output
  * stream. The output is captured by the TriCore test device and can be used
  * for debugging and verification purposes.
+ * \param format The format string, similar to the standard printf function.
+ * \param ... Additional arguments to be formatted according to the format string.
+ * \return The number of characters printed, excluding the null byte used to end
+ * output to strings.
  */
 int core_printf(const char *format, ...);
