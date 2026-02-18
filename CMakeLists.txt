@@ -9,6 +9,7 @@ add_subdirectory(Configurations)
 add_subdirectory(Libraries/Infra)
 add_subdirectory(Libraries/Service)
 add_subdirectory(Libraries/iLLD)
+add_subdirectory(Ssw)
 
 add_executable(${CMAKE_PROJECT_NAME}
     Cpu0_Main.c
@@ -43,8 +44,8 @@ set(TriCoreQuasihostingCompileDefinitions
 )
 
 set(TriCoreQuasihostingSystemSources
-    ${CMAKE_SOURCE_DIR}/Tests/ssw_tc0.c
-    ${CMAKE_SOURCE_DIR}/Tests/stdlib.c
+    ${CMAKE_SOURCE_DIR}/Ssw/ssw_tc0.c
+    ${CMAKE_SOURCE_DIR}/Ssw/stdlib.c
 )
 set(TriCoreQuasihostingIncludeDirectories
     ${CMAKE_SOURCE_DIR}
@@ -54,6 +55,7 @@ set(TriCoreQuasihostingLinkLibraries
     Infra
     Service
     iLLD
+    Ssw
 )
 set(TriCoreQuasihostingLinkOptions
     -T ${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl
