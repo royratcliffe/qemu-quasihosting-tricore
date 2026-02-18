@@ -1,3 +1,7 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: 2025, Roy Ratcliffe, Northumberland, United Kingdom
+ */
 /*!
  * \file cxi.h
  * \brief Macros to convert between CXI values and CSA pointers.
