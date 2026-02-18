@@ -7,7 +7,7 @@ target_include_directories(Ssw PUBLIC
 )
 target_sources(Ssw PRIVATE
     ssw_tc0.c
-    stdlib.c
+    unistd.c
 )
 target_link_libraries(Ssw
     Infra
