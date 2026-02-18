@@ -5,7 +5,10 @@ message("Build type: " ${CMAKE_BUILD_TYPE})
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_subdirectory(cmake/ConfigurationsAndLibraries)
+add_subdirectory(Configurations)
+add_subdirectory(Libraries/Infra)
+add_subdirectory(Libraries/Service)
+add_subdirectory(Libraries/iLLD)
 
 add_executable(${CMAKE_PROJECT_NAME}
     Cpu0_Main.c
@@ -20,7 +23,10 @@ target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add linked libraries.
 target_link_libraries(${CMAKE_PROJECT_NAME}
-    ConfigurationsAndLibraries
+    Configurations
+    Infra
+    Service
+    iLLD
 )
 
 include(CTest)
@@ -44,7 +50,10 @@ set(TriCoreQuasihostingIncludeDirectories
     ${CMAKE_SOURCE_DIR}
 )
 set(TriCoreQuasihostingLinkLibraries
-    ConfigurationsAndLibraries
+    Configurations
+    Infra
+    Service
+    iLLD
 )
 set(TriCoreQuasihostingLinkOptions
     -T ${CMAKE_SOURCE_DIR}/Lcf_Gnuc_Tricore_Tc.lsl
