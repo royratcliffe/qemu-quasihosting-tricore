@@ -44,8 +44,6 @@ set(TriCoreQuasihostingCompileDefinitions
 )
 
 set(TriCoreQuasihostingSystemSources
-    ${CMAKE_SOURCE_DIR}/Ssw/ssw_tc0.c
-    ${CMAKE_SOURCE_DIR}/Ssw/stdlib.c
 )
 set(TriCoreQuasihostingIncludeDirectories
     ${CMAKE_SOURCE_DIR}
