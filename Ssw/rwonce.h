@@ -2,11 +2,6 @@
  * SPDX-License-Identifier: MIT
  * SPDX-FileCopyrightText: 2023, Roy Ratcliffe, Northumberland, United Kingdom
  */
-/*
- * rwonce.h
- * Copyright (c) 2023, Roy Ratcliffe, Northumberland, United Kingdom
- * SPDX-License-Identifier: MIT
- */
 /*!
  * \file rwonce.h
  * \brief Macros for single-read and single-write access.

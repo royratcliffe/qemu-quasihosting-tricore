@@ -1,3 +1,27 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: 2025, Roy Ratcliffe, Northumberland, United Kingdom
+ */
+/*!
+ * \file ssw.h
+ * \brief Startup Software (SSW) header file.
+ * \details This header file contains declarations and definitions for the
+ * Startup Software (SSW) component of the TriCore test suite. It includes
+ * function declarations for initialising the Context Save Area (CSA) linked
+ * list, as well as macros for single-read and single-write access. The SSW
+ * component provides essential services and utilities for the TriCore test
+ * suite, including core initialisation, context management, and communication
+ * with the TriCore test device. The functions and macros defined in this header
+ * are used throughout the SSW implementation to ensure proper initialisation
+ * and operation of the system software.
+ * \note The SSW component is responsible for setting up the execution
+ * environment for the TriCore architecture, including configuring the program
+ * status word (PSW), initialising address registers, and ensuring that memory
+ * operations are properly ordered using data and instruction synchronisation
+ * barriers. It also provides core-specific functions for exiting and printing
+ * output, which are used by the test code running on the emulated TriCore core.
+ */
+
 #ifndef SSW_H
 #define SSW_H
 
