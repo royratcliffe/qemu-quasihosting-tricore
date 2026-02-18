@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(Ssw C)
 
-add_library(Ssw STATIC)
+add_library(Ssw OBJECT)
 target_include_directories(Ssw PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
