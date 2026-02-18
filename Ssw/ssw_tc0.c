@@ -1,3 +1,26 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * SPDX-FileCopyrightText: 2025, Roy Ratcliffe, Northumberland, United Kingdom
+ */
+/*!
+ * \file ssw_tc0.c
+ * \brief Core 0 start-up code.
+ * \details This source file contains the start-up code for core 0 of the TriCore
+ * architecture. It includes the initialisation of the context save area (CSA),
+ * setting up of stack pointers, and jumping to the main function of core 0. The
+ * start-up code is responsible for preparing the core for execution and ensuring
+ * that the necessary hardware and software components are properly initialised
+ * before the main application code is executed.
+ *
+ * The start-up code is typically executed immediately after a reset or power-on
+ * event, and it is crucial for the correct operation of the system. It sets up
+ * the execution environment for the core, including configuring the program
+ * status word (PSW), initialising address registers, and ensuring that memory
+ * operations are properly ordered using data and instruction synchronisation
+ * barriers. After completing the initialisation steps, it transfers control to
+ * the main function of core 0, where the application logic begins.
+ */
+
 #include "ssw.h"
 
 /*

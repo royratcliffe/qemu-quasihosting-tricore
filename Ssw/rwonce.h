@@ -7,6 +7,19 @@
  * Copyright (c) 2023, Roy Ratcliffe, Northumberland, United Kingdom
  * SPDX-License-Identifier: MIT
  */
+/*!
+ * \file rwonce.h
+ * \brief Macros for single-read and single-write access.
+ * \details This header defines two macros, \c READ_ONCE and \c WRITE_ONCE,
+ * which are used to ensure that a variable is read or written exactly once,
+ * preventing compiler optimisations from reordering or eliminating these
+ * accesses. The \c READ_ONCE macro reads a variable in a way that guarantees it
+ * is read from memory exactly once, while the \c WRITE_ONCE macro writes to a
+ * variable in a way that guarantees it is written to memory exactly once. These
+ * macros are particularly useful in concurrent programming scenarios where
+ * multiple threads may access the same variable, and it is important to ensure
+ * that each thread sees a consistent view of the variable's value.
+ */
 
 #pragma once
 
