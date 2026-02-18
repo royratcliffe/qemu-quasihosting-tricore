@@ -33,14 +33,19 @@
 /*------------------------------------------Configuration for IfxScu_cfg.h-------------------------------------------*/
 /*********************************************************************************************************************/
 /* External oscillator frequency in Hz */
-#define IFX_CFG_SCU_XTAL_FREQUENCY      (20000000)  /* Allowed values are: 40000000, 25000000, 20000000, 16000000 */
+#define IFX_CFG_SCU_XTAL_FREQUENCY        (20000000)  /* Allowed values are: 40000000, 25000000, 20000000, 16000000 */
+
+/* PLL,PLL1 and PLL2 frequency are defined in IfxScu_Cfg.h. To change the default frequency, uncomment below lines
+ * and choose one of the supported values.
+ */
+
 /* System PLL frequency in Hz */
-#define IFX_CFG_SCU_PLL_FREQUENCY       (300000000) /* Allowed values are: 300000000, 200000000, 160000000, 133000000
-                                                     * or 80000000 */
+/* #define IFX_CFG_SCU_PLL_FREQUENCY      (300000000) */   /* Allowed values are: 300000000, 240000000, 200000000, 160000000, 
+                                                             * 133000000, 80000000 */
 /* Peripheral PLL1 frequency in Hz */
-#define IFX_CFG_SCU_PLL1_FREQUENCY      (320000000) /* Allowed values are: 320000000, 160000000 */
+/*#define IFX_CFG_SCU_PLL1_FREQUENCY      (320000000) */    /* Allowed values are: 320000000, 160000000 */
 /* Peripheral PLL2 frequency in Hz */
-#define IFX_CFG_SCU_PLL2_FREQUENCY      (200000000) /* Allowed values are: 200000000 */
+/*#define IFX_CFG_SCU_PLL2_FREQUENCY      (200000000) */    /* Allowed values are: 200000000 */
 
 /*********************************************************************************************************************/
 /*-----------------------------------Configuration for Software managed interrupt------------------------------------*/
@@ -51,5 +56,17 @@
 /*---------------------------------Configuration for Trap Hook Functions' Extensions---------------------------------*/
 /*********************************************************************************************************************/
 /* #define IFX_CFG_EXTEND_TRAP_HOOKS */ /* Decomment this line if the project needs to extend trap hook functions */
+
+/* #define IFX_CFG_SSW_RETURN_FROM_MAIN */
+
+/*********************************************************************************************************************/
+/*---------------------------------Configuration for Device and Pin package------------------------------------------*/
+/*********************************************************************************************************************/
+
+#define DEVICE_TC37X			        1
+
+/* #define IFX_PIN_PACKAGE_516          1 */
+/* #define IFX_PIN_PACKAGE_LFBGA292     1 */
+#define IFX_PIN_PACKAGE_LQFP176         1
 
 #endif /* IFX_CFG_H */

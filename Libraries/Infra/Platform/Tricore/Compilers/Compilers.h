@@ -42,6 +42,7 @@
 #define COMPILERS_H 1
 
 /******************************************************************************/
+#define IFX_USED __attribute__((used))
 
 #include "Ifx_Cfg.h"
 
@@ -81,8 +82,11 @@
 #elif defined(__TASKING__)
 #include "CompilerTasking.h"
 
-#elif defined(__HIGHTEC__)
+#elif defined(__HIGHTEC__) && !defined(__clang__)
 #include "CompilerGnuc.h"
+
+#elif defined(__HIGHTEC__) && defined(__clang__)
+#include "CompilerHighTec.h"
 
 #elif defined(__GNUC__) && !defined(__HIGHTEC__)
 #include "CompilerGcc.h"
