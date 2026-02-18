@@ -36,7 +36,7 @@ void core0_main(void) {
   const uint32 fcx = Ifx_Ssw_MFCR(CPU_FCX);
   const uint32 lcx = Ifx_Ssw_MFCR(CPU_LCX);
   (void)printf("FCX: 0x%08x, LCX: 0x%08x\n", (unsigned)fcx, (unsigned)lcx);
-  for (uint32 cxi = fcx; cxi != lcx;) {
+  for (uint32 cxi = fcx; cxi != 0;) {
     uint32 *csa = CSA_OF_CXI(cxi);
     (void)printf("  CSA at %p\n", (void *)csa);
     assert(csa >= (uint32 *)__CSA(0) && csa < (uint32 *)__CSA_END(0));
