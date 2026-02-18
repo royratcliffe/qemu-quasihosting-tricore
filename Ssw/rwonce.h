@@ -36,7 +36,7 @@
  * Overrides any C optimisations that compile an assignment to less-than-atomic
  * write access by casting the left-hand value to a mutable volatile.
  */
-#define WRITE_ONCE(lvalue, rvalue)                                                                                     \
-  do {                                                                                                                 \
-    *(volatile typeof(lvalue) *)&(lvalue) = (rvalue);                                                                  \
+#define WRITE_ONCE(lvalue, rvalue)                    \
+  do {                                                \
+    *(volatile typeof(lvalue) *)&(lvalue) = (rvalue); \
   } while (0)
